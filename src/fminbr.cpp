@@ -99,10 +99,14 @@ double fminbr(double a, double b, bindtype& fn,const double& tol)
     			/* Decide if the interpolation can be tried	*/
     if( fabs(x-w) >= tol_act  )		/* If x and w are distinct      */
     {					/* interpolatiom may be tried	*/
-	register double p; 		/* Interpolation step is calcula-*/
-	register double q;              /* ted as p/q; division operation*/
+	//register double p; 		/* Interpolation step is calcula-*/
+	//register double q;              /* ted as p/q; division operation*/
                                         /* is delayed until last moment	*/
-	register double t;
+	//register double t;
+	double p; 		/* Interpolation step is calcula-*/
+	double q;              /* ted as p/q; division operation*/
+                                        /* is delayed until last moment	*/
+	double t;
 
 	t = (x-w) * (fx-fv);
 	q = (x-v) * (fx-fw);
@@ -132,9 +136,11 @@ double fminbr(double a, double b, bindtype& fn,const double& tol)
 	}
 				/* Obtain the next approximation to min	*/
     {				/* and reduce the enveloping range	*/
-      register double t = x + new_step;	/* Tentative point for the min	*/
-      register double ft = fn(t);
+      //register double t = x + new_step;	/* Tentative point for the min	*/
+      //register double ft = fn(t);
 
+      double t = x + new_step;	/* Tentative point for the min	*/
+      double ft = fn(t);
       if( ft <= fx )
       {                                 /* t is a better approximation	*/
 	if( t < x )			/* Reduce the range so that	*/

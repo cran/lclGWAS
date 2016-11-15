@@ -14,7 +14,7 @@ enum { nrules = 5 };
   typedef struct { \
     count n; \
     real weight[nrules], scale[nrules], norm[nrules]; \
-    real gen[NDIM]; \
+    real gen[4]; \
   } Set
 
 /*********************************************************************/

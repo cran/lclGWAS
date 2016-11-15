@@ -35,7 +35,7 @@ stdt<-date()
 \begin{frame}
 	\title{\pkgname}
 	\subtitle{Efficient Estimation of Discrete-Time Multivariate Frailty Model Using Exact Likelihood Function for Grouped Survival Data}
-	\date{2016-11-10}
+	\date{2016-11-15}
 	\titlepage
 \end{frame}
 
