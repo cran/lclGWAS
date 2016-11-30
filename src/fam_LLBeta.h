@@ -14,6 +14,7 @@
 #include <math.h>
 #include "cuba.h"
 #include "integrand.h"
+#include "likelihood_ind.h"
 #include "global.h"
 #include <iostream>
 
@@ -37,7 +38,7 @@ double fam_LLBeta(double beta,
   
   double sum_LL = 0.00;
   for(int k = 0; k < m; k++){
-    for(int j = 0; j < 3; j++){
+    for(int j = 0; j < fam_size[k]; j++){
       global_Dtime_[j] = dt[j+curPid];
        				     /* 
 					grep dtime, G and Delta for each 
@@ -48,7 +49,9 @@ double fam_LLBeta(double beta,
       global_Delta_[j] = Delta[j+curPid];
     }
     curPid += fam_size[k];
-    Cuhre(fam_size[k], 1,
+    if(fam_size[k]!=1)
+    {
+      Cuhre(fam_size[k], 1,
       Integrand,
       1e-3, 1e-12,
       0, 0, 50000,
@@ -57,7 +60,10 @@ double fam_LLBeta(double beta,
       integral, error, prob
       );
 
-    sum_LL += log((double)integral[0]);
+      sum_LL += log((double)integral[0]);
+	}
+	else
+	  sum_LL+= log(likelihood_ind());
   }
   return -sum_LL; 		// return the negative log likelihood 
 }

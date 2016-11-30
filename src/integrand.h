@@ -134,17 +134,16 @@ static void Integrand(const int    *ndim,
 	case 4:
 	  bkb = 
 	    -(1/((*global_sigma2_)*2))
-	    *(
-	        2.6667*    b_trans[0]*b_trans[0]
-	  +2.6667*    b_trans[1]*b_trans[1]
-	  +3* b_trans[2]*b_trans[2]
-	  +3* b_trans[3]*b_trans[3]
-	  +2.6667*    b_trans[0]*b_trans[1]
-	  -4* b_trans[1]*b_trans[2]
-	  +4* b_trans[2]*b_trans[3]
-	  -4* b_trans[3]*b_trans[0]
-	  -4* b_trans[0]*b_trans[2]
-	  -4* b_trans[1]*b_trans[3]
+	    *2*(
+	        +b_trans[0]*b_trans[0]
+	        +b_trans[1]*b_trans[1]
+	        +b_trans[2]*b_trans[2]
+	        +b_trans[3]*b_trans[3]
+            -b_trans[0]*b_trans[2]
+	        -b_trans[0]*b_trans[3]
+	        -b_trans[1]*b_trans[2]
+	        -b_trans[1]*b_trans[3]
+	        +b_trans[2]*b_trans[3]
 	    );
 	  break;
 	  

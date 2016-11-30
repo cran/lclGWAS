@@ -14,6 +14,7 @@
 #include <math.h>
 #include "cuba.h"
 #include "integrand.h"
+#include "likelihood_ind.h"
 #include "global.h"
 #include <iostream>
 
@@ -52,7 +53,8 @@ double fam_LLVar(double sigma2,
     }
 
 	curPid +=fam_size[k]; // update the current pid.
-
+    
+    if(fam_size[k] !=1){
     Cuhre(fam_size[k], NCOMP,
       Integrand,
       1e-3, 1e-12,
@@ -63,7 +65,10 @@ double fam_LLVar(double sigma2,
       );
 
     sum_LL += log((double)integral[0]/(*global_sigma2_)/sqrt((*global_sigma2_)));
-  }
+    }
+    else
+	   sum_LL += log(likelihood_ind());    
+ }
  
   return -sum_LL; 		// return the negative log likelihood 
 }

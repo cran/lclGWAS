@@ -16,7 +16,7 @@
 #include <ctime>
 #include "fam_LLVar.h"
 #include "Rcpp.h"
-
+#include "famSize.h"
 
 using boost::bind;
 typedef boost::function<double(double x)> bindtype;
@@ -25,25 +25,25 @@ using namespace std;
 using namespace Rcpp;
 
 //[[Rcpp::export]]
-List varEst( Rcpp::NumericVector fam_size,
+List varEst( Rcpp::NumericVector fam_group,
              Rcpp::NumericVector alpha,
              Rcpp::NumericVector dtime,
              Rcpp::NumericVector delta,
              Rcpp::NumericVector g,       
              double beta,  // The value of beta
-             int    m, 	 // Number of families
              double lower, // Lower bound of opt regime
              double upper  // Upper bound of opt regime
 ) 
 {
-  
   double* av = new double[alpha.size()];
   int*    dt = new int[dtime.size()];
   int* Delta = new int[delta.size()];
   int*     G = new int[g.size()];
+  int      m = max(fam_group);
   double* logat = new double[alpha.size()];
-  int* famsize = new int[fam_size.size()];
-  
+  int*  famsize = new int[m];
+  int* famgroup = new int[fam_group.size()]; 
+ 
   for(int i=0; i<alpha.size(); i++)
     av[i]=alpha[i];
   for(int i=0; i<alpha.size(); i++)
@@ -54,9 +54,12 @@ List varEst( Rcpp::NumericVector fam_size,
     G[i]=g[i];
   for(int i=0; i<delta.size(); i++)
     Delta[i]=delta[i];  	 
-  for(int i=0; i<fam_size.size(); i++)
-    famsize[i] = fam_size[i];
-  
+  for(int i=0; i<fam_group.size();i++)
+    famgroup[i] = fam_group[i];
+
+  // generate number of subject for each family and put in famsize array.
+  famSize(famsize, famgroup, fam_group.size());
+   
   global_alpha_v_       = av;       
   global_Dtime_         = dt;   
   global_Delta_         = Delta;

@@ -6,54 +6,50 @@
 using namespace Rcpp;
 
 // alphaEst
-List alphaEst(int m, Rcpp::NumericVector dtime, Rcpp::NumericVector delta, Rcpp::NumericVector g);
-RcppExport SEXP lclGWAS_alphaEst(SEXP mSEXP, SEXP dtimeSEXP, SEXP deltaSEXP, SEXP gSEXP) {
+List alphaEst(Rcpp::NumericVector dtime, Rcpp::NumericVector delta);
+RcppExport SEXP lclGWAS_alphaEst(SEXP dtimeSEXP, SEXP deltaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< int >::type m(mSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type dtime(dtimeSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type delta(deltaSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type g(gSEXP);
-    __result = Rcpp::wrap(alphaEst(m, dtime, delta, g));
+    __result = Rcpp::wrap(alphaEst(dtime, delta));
     return __result;
 END_RCPP
 }
 // betaEst
-List betaEst(Rcpp::NumericVector fam_size, Rcpp::NumericVector alpha, Rcpp::NumericVector dtime, Rcpp::NumericVector delta, Rcpp::NumericVector g, double var, int m, double lower, double upper);
-RcppExport SEXP lclGWAS_betaEst(SEXP fam_sizeSEXP, SEXP alphaSEXP, SEXP dtimeSEXP, SEXP deltaSEXP, SEXP gSEXP, SEXP varSEXP, SEXP mSEXP, SEXP lowerSEXP, SEXP upperSEXP) {
+List betaEst(Rcpp::NumericVector fam_group, Rcpp::NumericVector alpha, Rcpp::NumericVector dtime, Rcpp::NumericVector delta, Rcpp::NumericVector g, double var, double lower, double upper);
+RcppExport SEXP lclGWAS_betaEst(SEXP fam_groupSEXP, SEXP alphaSEXP, SEXP dtimeSEXP, SEXP deltaSEXP, SEXP gSEXP, SEXP varSEXP, SEXP lowerSEXP, SEXP upperSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type fam_size(fam_sizeSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type fam_group(fam_groupSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type dtime(dtimeSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type delta(deltaSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type g(gSEXP);
     Rcpp::traits::input_parameter< double >::type var(varSEXP);
-    Rcpp::traits::input_parameter< int >::type m(mSEXP);
     Rcpp::traits::input_parameter< double >::type lower(lowerSEXP);
     Rcpp::traits::input_parameter< double >::type upper(upperSEXP);
-    __result = Rcpp::wrap(betaEst(fam_size, alpha, dtime, delta, g, var, m, lower, upper));
+    __result = Rcpp::wrap(betaEst(fam_group, alpha, dtime, delta, g, var, lower, upper));
     return __result;
 END_RCPP
 }
 // varEst
-List varEst(Rcpp::NumericVector fam_size, Rcpp::NumericVector alpha, Rcpp::NumericVector dtime, Rcpp::NumericVector delta, Rcpp::NumericVector g, double beta, int m, double lower, double upper);
-RcppExport SEXP lclGWAS_varEst(SEXP fam_sizeSEXP, SEXP alphaSEXP, SEXP dtimeSEXP, SEXP deltaSEXP, SEXP gSEXP, SEXP betaSEXP, SEXP mSEXP, SEXP lowerSEXP, SEXP upperSEXP) {
+List varEst(Rcpp::NumericVector fam_group, Rcpp::NumericVector alpha, Rcpp::NumericVector dtime, Rcpp::NumericVector delta, Rcpp::NumericVector g, double beta, double lower, double upper);
+RcppExport SEXP lclGWAS_varEst(SEXP fam_groupSEXP, SEXP alphaSEXP, SEXP dtimeSEXP, SEXP deltaSEXP, SEXP gSEXP, SEXP betaSEXP, SEXP lowerSEXP, SEXP upperSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type fam_size(fam_sizeSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type fam_group(fam_groupSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type dtime(dtimeSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type delta(deltaSEXP);
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type g(gSEXP);
     Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
-    Rcpp::traits::input_parameter< int >::type m(mSEXP);
     Rcpp::traits::input_parameter< double >::type lower(lowerSEXP);
     Rcpp::traits::input_parameter< double >::type upper(upperSEXP);
-    __result = Rcpp::wrap(varEst(fam_size, alpha, dtime, delta, g, beta, m, lower, upper));
+    __result = Rcpp::wrap(varEst(fam_group, alpha, dtime, delta, g, beta, lower, upper));
     return __result;
 END_RCPP
 }
