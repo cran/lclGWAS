@@ -13,7 +13,7 @@ License: GPL (>= 2)}
 Package: \tab lclGWAS\cr
 Type: \tab Package\cr
 Version: \tab 1.0.2\cr
-Date: \tab 2016-11-30\cr
+Date: \tab 2017-02-20\cr
 License: \tab GPL-3\cr
 }
 Please refer to the individual function documentation or the included vignette for more information. The package vignette serves as a tutorial for using this package.

@@ -2,8 +2,8 @@ Package: lclGWAS
 Type: Package
 Title: Efficient Estimation of Discrete-Time Multivariate Frailty Model
         Using Exact Likelihood Function for Grouped Survival Data
-Version: 1.0.2
-Date: 2016-11-30
+Version: 1.0.3
+Date: 2017-02-20
 Author: Jiaxing Lin, Alexander Sibley, Tracy Truong, Nancy Cox, Eileen Dolan, Yu
     Jiang, Janice McCarthy, Andrew Allen, Kouros Owzar, Zhiguo Li
 Maintainer: Jiaxing Lin <jiaxing.lin@duke.edu>
@@ -15,6 +15,6 @@ Suggests: knitr
 VignetteBuilder: knitr
 BuildVignettes: yes
 NeedsCompilation: yes
-Packaged: 2016-11-30 17:33:55 UTC; jl354
+Packaged: 2017-02-20 21:11:45 UTC; jl354
 Repository: CRAN
-Date/Publication: 2016-11-30 20:03:55
+Date/Publication: 2017-02-21 00:03:26
